@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://udenrofusdanskcasinos.com/sitemap-index.xml
+Sitemap: https://udenrofusdanskcasinoscom.vercel.app/sitemap-index.xml

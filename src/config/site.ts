@@ -1,6 +1,6 @@
 export const SITE = {
-  domain: 'udenrofusdanskcasinos.com',
-  url: 'https://udenrofusdanskcasinos.com',
+  domain: 'udenrofusdanskcasinoscom.vercel.app',
+  url: 'https://udenrofusdanskcasinoscom.vercel.app',
   brand: 'Uden ROFUS Dansk Casinos',
   brandShort: 'URDC',
   brandTagline: 'Din guide til udenlandske casinoer',

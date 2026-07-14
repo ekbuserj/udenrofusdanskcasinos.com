@@ -11,11 +11,11 @@
 - Casino uden NemID
 
 ## Key pages
-- https://udenrofusdanskcasinos.com/
-- https://udenrofusdanskcasinos.com/udenlandske-casinoer/
-- https://udenrofusdanskcasinos.com/spil-uden-rofus/
-- https://udenrofusdanskcasinos.com/casino-uden-mitid/
-- https://udenrofusdanskcasinos.com/casino-uden-nemid/
+- https://udenrofusdanskcasinoscom.vercel.app/
+- https://udenrofusdanskcasinoscom.vercel.app/udenlandske-casinoer/
+- https://udenrofusdanskcasinoscom.vercel.app/spil-uden-rofus/
+- https://udenrofusdanskcasinoscom.vercel.app/casino-uden-mitid/
+- https://udenrofusdanskcasinoscom.vercel.app/casino-uden-nemid/
 
 ## Contact
 kontakt@udenrofusdanskcasinos.com
