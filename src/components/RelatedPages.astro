@@ -44,19 +44,19 @@ const related = CLUSTER_PAGES.filter((p) => p.path !== currentPath);
     flex-direction: column;
     gap: 0.25rem;
     padding: 0.85rem 1rem;
-    background: linear-gradient(145deg, #faf6ef 0%, #f0e8d8 100%);
-    border: 1px solid var(--gold-line);
+    background: rgba(8, 28, 22, 0.72);
+    border: 1px solid rgba(201, 168, 76, 0.2);
     border-radius: var(--radius-sm);
     text-decoration: none;
-    color: var(--ink);
-    transition: border-color 0.2s, box-shadow 0.2s;
+    color: var(--cream);
+    transition: border-color 0.2s, background 0.2s;
   }
   a:hover {
-    border-color: var(--gold);
-    box-shadow: 0 0 20px rgba(201, 168, 76, 0.15);
-    color: var(--ink);
+    border-color: rgba(201, 168, 76, 0.4);
+    background: rgba(12, 38, 30, 0.88);
+    color: var(--cream);
   }
 
-  .related-title { font-weight: 700; font-size: 0.92rem; color: var(--danish-red); }
-  .related-desc { font-size: 0.78rem; color: var(--ink-muted); line-height: 1.45; }
+  .related-title { font-weight: 700; font-size: 0.92rem; color: var(--gold); }
+  .related-desc { font-size: 0.78rem; color: rgba(243, 236, 224, 0.55); line-height: 1.45; }
 </style>

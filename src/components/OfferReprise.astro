@@ -33,11 +33,9 @@ import { CASINOS, TOP_CASINO } from '../config/casinos';
   .reprise {
     margin: 3rem 0 2rem;
     padding: 1.75rem;
-    background:
-      linear-gradient(160deg, rgba(26, 20, 14, 0.65) 0%, rgba(12, 46, 36, 0.85) 100%);
-    border: 1px solid var(--gold-line);
+    background: rgba(6, 22, 18, 0.55);
+    border: 1px solid rgba(201, 168, 76, 0.22);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md), 0 0 40px rgba(201, 168, 76, 0.08);
   }
 
   .reprise-head { margin-bottom: 1.25rem; }
@@ -56,19 +54,19 @@ import { CASINOS, TOP_CASINO } from '../config/casinos';
     align-items: center;
     gap: 0.75rem;
     padding: 0.65rem 0.85rem;
-    background: linear-gradient(145deg, #faf6ef 0%, #f0e8d8 100%);
-    border: 1px solid var(--gold-line);
+    background: rgba(8, 28, 22, 0.65);
+    border: 1px solid rgba(201, 168, 76, 0.2);
     border-radius: var(--radius-sm);
     text-decoration: none;
-    color: var(--ink);
-    transition: border-color 0.2s, transform 0.2s var(--ease-spring), box-shadow 0.2s;
+    color: var(--cream);
+    transition: border-color 0.2s, transform 0.2s var(--ease-spring), background 0.2s;
   }
 
   @media (hover: hover) {
     .reprise-item:hover {
-      border-color: var(--gold);
+      border-color: rgba(201, 168, 76, 0.4);
+      background: rgba(12, 38, 30, 0.85);
       transform: translateX(4px);
-      box-shadow: 0 0 20px rgba(201, 168, 76, 0.2);
     }
   }
 
@@ -85,11 +83,11 @@ import { CASINOS, TOP_CASINO } from '../config/casinos';
   .reprise-logo img { max-width: 100%; max-height: 1.6rem; object-fit: contain; }
 
   .reprise-info { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-  .reprise-name { font-weight: 700; font-size: 0.9rem; color: var(--ink); }
-  .reprise-bonus { font-size: 0.78rem; color: var(--danish-red); font-weight: 600; }
+  .reprise-name { font-weight: 700; font-size: 0.9rem; color: var(--cream); }
+  .reprise-bonus { font-size: 0.78rem; color: #e8b4bb; font-weight: 600; }
 
   .reprise-arrow {
-    color: var(--danish-red);
+    color: var(--gold);
     font-size: 1.1rem;
     flex-shrink: 0;
     transition: transform 0.2s;

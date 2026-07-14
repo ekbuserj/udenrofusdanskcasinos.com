@@ -100,29 +100,27 @@ const extraPayments = c.paymentMethods.length - shownPayments.length;
     grid-template-areas:
       'rank main'
       'cta cta';
-    background:
-      linear-gradient(145deg, #faf6ef 0%, #f0e8d8 100%);
-    border: 1px solid var(--gold-line);
+    background: rgba(8, 28, 22, 0.72);
+    border: 1px solid rgba(201, 168, 76, 0.22);
     border-radius: var(--radius-md);
-    box-shadow:
-      var(--shadow-sm),
-      0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
     overflow: hidden;
     scroll-margin-top: calc(var(--header-h) + 1rem);
-    transition: box-shadow 0.25s var(--ease-out), transform 0.25s var(--ease-out), border-color 0.25s;
+    transition: box-shadow 0.25s var(--ease-out), transform 0.25s var(--ease-out), border-color 0.25s, background 0.25s;
   }
 
   @media (hover: hover) {
     .offer-card:hover {
-      box-shadow: var(--shadow-md), 0 0 24px rgba(201, 168, 76, 0.12);
+      background: rgba(12, 38, 30, 0.88);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
       transform: translateY(-2px);
-      border-color: var(--gold);
+      border-color: rgba(201, 168, 76, 0.4);
     }
   }
 
   .offer-card--top {
-    border-color: rgba(196, 18, 46, 0.45);
-    box-shadow: var(--shadow-md), 0 0 0 1px rgba(196, 18, 46, 0.15), 0 0 32px rgba(201, 168, 76, 0.1);
+    border-color: rgba(196, 18, 46, 0.4);
+    background: rgba(10, 32, 26, 0.82);
   }
 
   .offer-rank {
@@ -131,8 +129,8 @@ const extraPayments = c.paymentMethods.length - shownPayments.length;
     align-items: flex-start;
     justify-content: center;
     padding: 1rem 0.65rem 0;
-    background: linear-gradient(180deg, var(--felt-mid) 0%, var(--felt) 100%);
-    border-right: 1px solid var(--gold-line);
+    background: rgba(0, 0, 0, 0.22);
+    border-right: 1px solid rgba(201, 168, 76, 0.18);
   }
 
   .rank-num {
@@ -142,7 +140,7 @@ const extraPayments = c.paymentMethods.length - shownPayments.length;
     line-height: 1;
   }
 
-  .offer-card--top .rank-num { color: #fff; text-shadow: 0 0 12px rgba(196, 18, 46, 0.6); }
+  .offer-card--top .rank-num { color: #f0a8b0; }
 
   .offer-main {
     grid-area: main;
@@ -156,7 +154,7 @@ const extraPayments = c.paymentMethods.length - shownPayments.length;
     align-items: center;
     margin-bottom: 0.75rem;
     padding-bottom: 0.75rem;
-    border-bottom: 1px solid rgba(26, 20, 14, 0.1);
+    border-bottom: 1px solid rgba(243, 236, 224, 0.1);
   }
 
   .logo-link {
@@ -169,7 +167,7 @@ const extraPayments = c.paymentMethods.length - shownPayments.length;
     border-radius: var(--radius-sm);
     padding: 0.4rem;
     text-decoration: none;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.06);
     transition: opacity 0.2s;
   }
   .logo-link:hover { opacity: 0.85; }
@@ -196,7 +194,7 @@ const extraPayments = c.paymentMethods.length - shownPayments.length;
     font-size: 1.2rem;
     margin: 0;
     line-height: 1.2;
-    color: var(--ink);
+    color: var(--cream);
   }
 
   .badge {
@@ -205,32 +203,32 @@ const extraPayments = c.paymentMethods.length - shownPayments.length;
     letter-spacing: 0.06em;
     text-transform: uppercase;
     padding: 0.2rem 0.5rem;
-    background: var(--gold-soft);
-    color: #7a6218;
-    border: 1px solid var(--gold-line);
+    background: rgba(201, 168, 76, 0.12);
+    color: var(--gold);
+    border: 1px solid rgba(201, 168, 76, 0.28);
     border-radius: 999px;
   }
 
   .rating {
     margin: 0;
     font-size: 0.75rem;
-    color: var(--ink-muted);
+    color: rgba(243, 236, 224, 0.55);
   }
-  .rating strong { color: var(--ink); }
+  .rating strong { color: var(--cream); }
   .stars { color: var(--gold); letter-spacing: -0.05em; margin-right: 0.2rem; }
 
   .offer-bonus { margin-bottom: 0.75rem; }
-  .offer-bonus .label { color: #8a7320; }
+  .offer-bonus .label { color: var(--gold); }
   .bonus-text {
     font-family: var(--font-display);
     font-size: clamp(1.15rem, 1rem + 0.8vw, 1.45rem);
-    color: var(--danish-red);
+    color: #e8b4bb;
     margin: 0.15rem 0 0.35rem;
     line-height: 1.2;
     max-width: none;
   }
-  .bonus-fs { display: block; font-size: 0.72em; color: var(--ink); margin-top: 0.1rem; }
-  .highlight { font-size: 0.84rem; color: var(--ink-soft); margin: 0; line-height: 1.5; }
+  .bonus-fs { display: block; font-size: 0.72em; color: var(--cream); margin-top: 0.1rem; }
+  .highlight { font-size: 0.84rem; color: rgba(243, 236, 224, 0.72); margin: 0; line-height: 1.5; }
 
   .specs {
     display: flex;
@@ -244,15 +242,15 @@ const extraPayments = c.paymentMethods.length - shownPayments.length;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--ink-muted);
+    color: rgba(243, 236, 224, 0.45);
   }
-  .specs dd { margin: 0; font-size: 0.85rem; font-weight: 600; color: var(--ink); }
+  .specs dd { margin: 0; font-size: 0.85rem; font-weight: 600; color: var(--cream); }
 
   .offer-cta {
     grid-area: cta;
     padding: 0.85rem 1rem;
-    background: linear-gradient(180deg, #ebe2d2 0%, #e2d7c4 100%);
-    border-top: 1px solid rgba(26, 20, 14, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+    border-top: 1px solid rgba(243, 236, 224, 0.08);
   }
 
   .cta-btn { width: 100%; }
@@ -260,7 +258,7 @@ const extraPayments = c.paymentMethods.length - shownPayments.length;
     margin: 0.45rem 0 0;
     font-size: 0.65rem;
     text-align: center;
-    color: var(--ink-muted);
+    color: rgba(243, 236, 224, 0.45);
   }
 
   @media (min-width: 720px) {
@@ -272,11 +270,11 @@ const extraPayments = c.paymentMethods.length - shownPayments.length;
     .rank-num { font-size: 2rem; }
     .offer-cta {
       border-top: 0;
-      border-left: 1px solid rgba(26, 20, 14, 0.1);
+      border-left: 1px solid rgba(243, 236, 224, 0.08);
       display: flex;
       flex-direction: column;
       justify-content: center;
-      background: linear-gradient(180deg, #f3ece0 0%, #ebe2d2 100%);
+      background: rgba(0, 0, 0, 0.18);
     }
     .logo-link { width: 5.5rem; height: 3.8rem; }
   }
