@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { INFO_PAGES, SITE } from '../config/site';
+import { buildGraph, organizationSchema, webPageSchema, breadcrumbSchema, authorSchema } from '../lib/schema';
+
+const page = INFO_PAGES[0];
+const schema = buildGraph([
+  organizationSchema(),
+  authorSchema(),
+  webPageSchema({ path: page.path, title: page.title, description: page.description }),
+  breadcrumbSchema([{ name: 'Forside', path: '/' }, { name: 'Om os', path: page.path }]),
+]);
+---
+
+<BaseLayout title={page.title} description={page.description} path={page.path} schema={schema}>
+  <div class="container page-layout">
+    <Breadcrumbs crumbs={[{ name: 'Forside', path: '/' }, { name: 'Om os', path: page.path }]} />
+    <h1>{page.h1}</h1>
+    <article class="prose">
+      <p>
+        {SITE.brand} er en uafhængig dansk guide til casino uden ROFUS og udenlandske casinoer. Vi tester operatører med rigtige indbetalinger og udbetalinger — og anbefaler kun sider, der leverer på bonus, hastighed og sikkerhed.
+      </p>
+      <h2>Vores redaktion</h2>
+      <p>
+        <strong>{SITE.author.name}</strong> ({SITE.author.role}) leder testarbejdet. {SITE.author.bio}
+      </p>
+      <h2>Sådan finansierer vi siden</h2>
+      <p>
+        Vi tjener provision via affiliatelinks, når du opretter konto hos en operatør. Det koster dig intet ekstra. Provisionen påvirker ikke, hvilke casinoer der anbefales — kun sider, der bestå vores test, kommer på listen.
+      </p>
+      <h2>Kontakt</h2>
+      <p>Skriv til <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-layout { padding: 1.5rem 0 3rem; }
+</style>

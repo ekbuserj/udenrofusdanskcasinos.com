@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import PageHero from '../components/PageHero.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import OfferWall from '../components/OfferWall.astro';
+import OfferReprise from '../components/OfferReprise.astro';
+import Faq from '../components/Faq.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import CasinoMention from '../components/CasinoMention.astro';
+import { CASINOS } from '../config/casinos';
+import { CLUSTER_PAGES, FAQ_ITEMS } from '../config/site';
+import {
+  buildGraph, organizationSchema, websiteSchema, authorSchema,
+  webPageSchema, articleSchema, breadcrumbSchema, faqSchema, casinoItemListSchema,
+} from '../lib/schema';
+
+const page = CLUSTER_PAGES[3];
+const schema = buildGraph([
+  organizationSchema(), websiteSchema(), authorSchema(),
+  webPageSchema({ path: page.path, title: page.title, description: page.description }),
+  articleSchema({ path: page.path, title: page.title, description: page.description, headline: page.h1 }),
+  breadcrumbSchema([{ name: 'Forside', path: '/' }, { name: 'Casino uden MitID', path: page.path }]),
+  casinoItemListSchema(CASINOS, page.path, 'Casino uden MitID 2026'),
+  faqSchema(FAQ_ITEMS.slice(4, 8)),
+]);
+---
+
+<BaseLayout title={page.title} description={page.description} path={page.path} keywords={page.keywords} schema={schema}>
+  <TrustBar />
+  <div class="container page-layout">
+    <Breadcrumbs crumbs={[{ name: 'Forside', path: '/' }, { name: 'Casino uden MitID', path: page.path }]} />
+    <PageHero compact h1={page.h1} intro="Registrér dig med e-mail på under 2 minutter — ingen MitID, ingen NemID, ingen dansk ID-verifikation ved opstart." />
+    <OfferWall title="Casino uden MitID" subtitle="Hurtig registrering · Store bonusser · Ingen ROFUS" />
+
+    <article class="prose content reveal">
+      <section>
+        <h2>Hvorfor casino uden MitID?</h2>
+        <p>
+          Alle dansklicenserede casinoer kræver MitID ved login og registrering. Et <strong>casino uden MitID</strong> lader dig oprette konto med e-mail og adgangskode — hurtigt, diskret og uden dansk identitetsbekræftelse ved opstart.
+        </p>
+      </section>
+
+      <section>
+        <h2>Sådan kommer du i gang</h2>
+        <ol>
+          <li>Vælg et casino fra listen — vi anbefaler <CasinoMention slug="godz" /></li>
+          <li>Klik «Få bonus» og udfyld e-mail + adgangskode</li>
+          <li>Indbetal med Visa, krypto eller e-wallet</li>
+          <li>Aktivér velkomstbonussen og begynd at spille</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Er det sikkert uden MitID?</h2>
+        <p>
+          Ja, når du vælger licenserede operatører. <CasinoMention slug="vipluck" /> og <CasinoMention slug="kyngs" /> bruger SSL-kryptering og verificerer identitet ved større udbetalinger — bare ikke via MitID.
+        </p>
+      </section>
+    </article>
+
+    <Faq items={FAQ_ITEMS.slice(4, 8)} title="Spørgsmål om casino uden MitID" />
+    <OfferReprise />
+    <AuthorBox />
+    <RelatedPages currentPath={page.path} />
+  </div>
+</BaseLayout>
+
+<style>
+  .page-layout { padding-bottom: 3rem; }
+  .content { margin-top: 2rem; }
+</style>

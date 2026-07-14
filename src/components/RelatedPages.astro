@@ -1,0 +1,62 @@
+---
+import { CLUSTER_PAGES } from '../config/site';
+
+interface Props {
+  currentPath: string;
+}
+
+const { currentPath } = Astro.props;
+const related = CLUSTER_PAGES.filter((p) => p.path !== currentPath);
+---
+
+<nav class="related reveal" aria-labelledby="related-heading">
+  <h2 id="related-heading">Relaterede guides</h2>
+  <ul>
+    {related.map((p) => (
+      <li>
+        <a href={p.path}>
+          <span class="related-title">{p.navLabel}</span>
+          <span class="related-desc">{p.description.slice(0, 90)}…</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .related { margin: 2.5rem 0; }
+  .related h2 { font-size: 1.25rem; margin-bottom: 0.85rem; }
+
+  ul {
+    display: grid;
+    gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (min-width: 640px) {
+    ul { grid-template-columns: 1fr 1fr; }
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: 0.85rem 1rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  a:hover {
+    border-color: var(--danish-red);
+    box-shadow: var(--shadow-sm);
+    color: var(--ink);
+  }
+
+  .related-title { font-weight: 700; font-size: 0.92rem; color: var(--danish-red); }
+  .related-desc { font-size: 0.78rem; color: var(--ink-muted); line-height: 1.45; }
+</style>

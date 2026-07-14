@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { INFO_PAGES } from '../config/site';
+import { buildGraph, organizationSchema, webPageSchema, breadcrumbSchema } from '../lib/schema';
+
+const page = INFO_PAGES[1];
+const schema = buildGraph([
+  organizationSchema(),
+  webPageSchema({ path: page.path, title: page.title, description: page.description }),
+  breadcrumbSchema([{ name: 'Forside', path: '/' }, { name: 'Ansvarligt spil', path: page.path }]),
+]);
+---
+
+<BaseLayout title={page.title} description={page.description} path={page.path} schema={schema}>
+  <div class="container page-layout">
+    <Breadcrumbs crumbs={[{ name: 'Forside', path: '/' }, { name: 'Ansvarligt spil', path: page.path }]} />
+    <h1>{page.h1}</h1>
+    <article class="prose">
+      <p>Spil er underholdning — aldrig en måde at tjene penge. Hvis spillet begynder at styre dig, er det tid til at stoppe.</p>
+      <h2>Faresignaler</h2>
+      <ul>
+        <li>Du spiller for at vinde penge, du har tabt</li>
+        <li>Du skjuler dit spil for familie eller venner</li>
+        <li>Du bruger penge, du skulle bruge på regninger</li>
+        <li>Du bliver irriteret, når du ikke kan spille</li>
+      </ul>
+      <h2>Få hjælp</h2>
+      <ul>
+        <li><a href="https://www.stopspillet.dk" target="_blank" rel="noopener noreferrer">StopSpillet</a> — ring 70 22 28 25</li>
+        <li><a href="https://ludomani.dk" target="_blank" rel="noopener noreferrer">Ludomani.dk</a></li>
+        <li><a href="https://www.rofus.nu" target="_blank" rel="noopener noreferrer">ROFUS</a> — frivillig udelukkelse</li>
+      </ul>
+      <p>Alle vores anbefalede casinoer er for personer over 18 år. 18+ gælder altid.</p>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-layout { padding: 1.5rem 0 3rem; }
+</style>

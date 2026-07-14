@@ -1,0 +1,151 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import TrustBar from '../components/TrustBar.astro';
+import PageHero from '../components/PageHero.astro';
+import OfferWall from '../components/OfferWall.astro';
+import OfferReprise from '../components/OfferReprise.astro';
+import Faq from '../components/Faq.astro';
+import AuthorBox from '../components/AuthorBox.astro';
+import RelatedPages from '../components/RelatedPages.astro';
+import CasinoMention from '../components/CasinoMention.astro';
+import { CASINOS } from '../config/casinos';
+import { CLUSTER_PAGES, FAQ_ITEMS, SITE } from '../config/site';
+import {
+  buildGraph,
+  organizationSchema,
+  websiteSchema,
+  authorSchema,
+  webPageSchema,
+  articleSchema,
+  breadcrumbSchema,
+  faqSchema,
+  casinoItemListSchema,
+} from '../lib/schema';
+
+const page = CLUSTER_PAGES[0];
+
+const schema = buildGraph([
+  organizationSchema(),
+  websiteSchema(),
+  authorSchema(),
+  webPageSchema({ path: page.path, title: page.title, description: page.description }),
+  articleSchema({ path: page.path, title: page.title, description: page.description, headline: page.h1 }),
+  breadcrumbSchema([{ name: 'Forside', path: '/' }]),
+  casinoItemListSchema(CASINOS, '/', 'Bedste casino uden ROFUS 2026'),
+  faqSchema(FAQ_ITEMS),
+]);
+---
+
+<BaseLayout title={page.title} description={page.description} path={page.path} keywords={page.keywords} schema={schema}>
+  <TrustBar />
+
+  <div class="container page-layout">
+    <PageHero
+      compact
+      h1={page.h1}
+      intro="Et casino uden ROFUS giver danskere adgang til større bonusser, tusindvis af spil og hurtige udbetalinger — uden MitID og uden danske indskudsgrænser. Vi har testet alle ni operatører med rigtige indbetalinger."
+    />
+
+    <OfferWall />
+
+    <article class="prose content reveal">
+      <section id="hvad-er-casino-uden-rofus">
+        <h2>Hvad er et casino uden ROFUS?</h2>
+        <p>
+          Et <strong>casino uden ROFUS</strong> er et online casino med international licens, der ikke er tilknyttet det danske register over frivilligt udelukkede spillere. I praksis betyder det, at du kan oprette konto med e-mail i stedet for MitID, og at hverken ROFUS-selvudelukkelse eller Spillemyndighedens indskudsgrænser gælder.
+        </p>
+        <p>
+          For mange danskere er et <strong>udenlandsk casino</strong> attraktivt, fordi velkomstbonusserne er langt større, spiludbuddet bredere, og udbetalinger ofte hurtigere end på dansklicenserede sider. Vores topvalg <CasinoMention slug="godz" /> scorer 10/10 med 100% op til 2.000 € og 300 free spins.
+        </p>
+      </section>
+
+      <section id="bedste-udenlandske-casino">
+        <h2>Bedste udenlandske casino for danskere i 2026</h2>
+        <p>
+          Når vi vurderer det <strong>bedste udenlandske casino</strong>, kigger vi på bonusværdi, udbetalingshastighed, spiludvalg, kundeservice og licens. Alle ni casinoer på listen har gyldig international licens og er testet med egne indbetalinger og udbetalinger.
+        </p>
+        <ul>
+          <li><CasinoMention slug="godz" /> — Bedste samlede pakke og hurtigste udbetalinger</li>
+          <li><CasinoMention slug="jokery" /> — Højeste bonusprocent: 300% op til 3.000 €</li>
+          <li><CasinoMention slug="lussurio" /> — Største velkomstpakke i kroner: 25.000 kr.</li>
+          <li><CasinoMention slug="vox" /> — Flest free spins: 600 spins i velkomstpakken</li>
+          <li><CasinoMention slug="scored" /> — Casino og sportsbook med 370% bonus</li>
+        </ul>
+      </section>
+
+      <section id="spil-uden-rofus">
+        <h2>Spil uden ROFUS: Hvad kan du forvente?</h2>
+        <p>
+          At <strong>spille uden ROFUS</strong> betyder adgang til tusindvis af spilleautomater, live dealer-borde, videopoker og progressive jackpots uden obligatoriske indsatslofter. Operatører som <CasinoMention slug="winbeatz" /> og <CasinoMention slug="thorfortune" /> tilbyder nordisk-inspirerede kampagner og jackpots på over 35 mio. kr.
+        </p>
+        <p>
+          Populære spil inkluderer Gates of Olympus, Sweet Bonanza, Book of Dead og live roulette fra Evolution. Alle anbefalede casinoer kører direkte i mobilbrowseren — ingen app-download nødvendig.
+        </p>
+      </section>
+
+      <section id="uden-mitid-nemid">
+        <h2>Casino uden MitID og casino uden NemID</h2>
+        <p>
+          Dansklicenserede sider kræver MitID ved login og registrering. Et <strong>casino uden MitID</strong> lader dig oprette konto på under 2 minutter med e-mail og adgangskode. Det samme gælder for <strong>casino uden NemID</strong> — NemID er erstattet af MitID, men udenlandske operatører bruger hverken det ene eller det andet.
+        </p>
+        <p>
+          <CasinoMention slug="kyngs" /> og <CasinoMention slug="vipluck" /> er særligt populære blandt danskere, der ønsker hurtig registrering uden dansk ID-verifikation ved opstart.
+        </p>
+      </section>
+
+      <section id="test-metode">
+        <h2>Sådan tester vi casinoerne</h2>
+        <p>Vores redaktion følger en fast testproces for hvert udenlandsk casino:</p>
+        <ol>
+          <li><strong>Registrering</strong> — Vi opretter konto og måler tiden (typisk 1–2 min.)</li>
+          <li><strong>Indbetaling</strong> — Vi indbetaler med Visa, krypto og e-wallet</li>
+          <li><strong>Spiltest</strong> — Vi tester slots, live casino og bonusaktivering</li>
+          <li><strong>Udbetaling</strong> — Vi anmoder om udbetaling og måler behandlingstid</li>
+          <li><strong>Support</strong> — Vi kontakter live chat og e-mail med spørgsmål på dansk/engelsk</li>
+        </ol>
+      </section>
+
+      <section id="bonusser">
+        <h2>Velkomstbonusser på casino uden ROFUS</h2>
+        <p>
+          Bonusserne på udenlandske casinoer er typisk 2–5× større end på danske sider. Du kan forvente matchbonusser fra 100% til 550%, hundredvis af free spins og VIP-cashback. Læs altid omsætningskravene — de ligger typisk på 30–45× bonusbeløbet.
+        </p>
+      </section>
+
+      <section id="sikkerhed">
+        <h2>Licens og sikkerhed</h2>
+        <p>
+          Alle anbefalede casinoer opererer under anerkendte licenser (Curaçao, Malta, Gibraltar). De bruger SSL-kryptering og certificerede RNG-systemer auditeret af uafhængige laboratorier. Vi anbefaler kun operatører med dokumenteret erfaring i fair spil og gennemsigtige bonusvilkår.
+        </p>
+      </section>
+
+      <section id="ansvarligt">
+        <h2>Ansvarligt spil</h2>
+        <p>
+          Spil skal være underholdning — ikke en indtægtskilde. Sæt egne grænser for tid og penge. Har du brug for hjælp, kontakt <a href="https://www.stopspillet.dk" rel="noopener noreferrer" target="_blank">StopSpillet</a> på 70 22 28 25 eller besøg <a href="/ansvarligt-spil/">vores side om ansvarligt spil</a>.
+        </p>
+      </section>
+    </article>
+
+    <Faq items={FAQ_ITEMS} />
+    <OfferReprise />
+    <AuthorBox />
+    <RelatedPages currentPath={page.path} />
+  </div>
+</BaseLayout>
+
+<style>
+  .page-layout {
+    padding-bottom: 3rem;
+  }
+
+  @media (max-width: 719px) {
+    .page-layout {
+      padding-top: 0;
+    }
+  }
+
+  .content {
+    margin-top: 2rem;
+  }
+</style>

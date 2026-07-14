@@ -1,0 +1,61 @@
+---
+import { CASINOS } from '../config/casinos';
+import CasinoCard from './CasinoCard.astro';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  id?: string;
+  compact?: boolean;
+}
+
+const {
+  title = 'Top 9 casinoer uden ROFUS',
+  subtitle = 'Sorteret efter vores uafhængige test — opdateret juli 2026',
+  id = 'top-casinoer',
+  compact = false,
+} = Astro.props;
+---
+
+<section class:list={['offerwall', { 'offerwall--compact': compact }]} id={id} aria-labelledby={`${id}-heading`}>
+  {!compact && (
+    <div class="offerwall-head reveal">
+      <p class="label">Vores anbefalinger</p>
+      <h2 id={`${id}-heading`}>{title}</h2>
+      <p class="offerwall-sub">{subtitle}</p>
+    </div>
+  )}
+  {compact && <h2 id={`${id}-heading`} class="sr-only">{title}</h2>}
+
+  <div class="offer-list">
+    {CASINOS.map((casino, i) => (
+      <CasinoCard casino={casino} rank={i + 1} eager={i < 2} />
+    ))}
+  </div>
+</section>
+
+<style>
+  .offerwall { margin: 0 0 2.5rem; }
+  .offerwall-head { margin-bottom: 1rem; }
+  .offerwall-head h2 { margin-top: 0.25rem; }
+  .offerwall-sub { color: var(--ink-soft); font-size: 0.92rem; margin: 0; }
+
+  .offer-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .offerwall--compact .offer-list { gap: 0.65rem; }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+  }
+</style>

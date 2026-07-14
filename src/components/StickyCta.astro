@@ -1,0 +1,87 @@
+---
+import { TOP_CASINO } from '../config/casinos';
+---
+
+<div class="sticky-cta" id="sticky-cta" hidden>
+  <div class="sticky-inner container">
+    <div class="sticky-info">
+      <span class="sticky-label">Bedste valg</span>
+      <strong>{TOP_CASINO.name}</strong>
+      <span class="sticky-bonus">{TOP_CASINO.bonus}</span>
+    </div>
+    <a href={TOP_CASINO.url} target="_blank" rel="sponsored nofollow noopener" class="btn btn-primary sticky-btn">
+      Få bonus
+    </a>
+  </div>
+</div>
+
+<script>
+  const sticky = document.getElementById('sticky-cta');
+  const target = document.getElementById('top-casinoer');
+  if (sticky && target) {
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        sticky.hidden = entry.isIntersecting || entry.boundingClientRect.top > 0;
+      },
+      { threshold: 0, rootMargin: '0px' }
+    );
+    io.observe(target);
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < 200) sticky.hidden = true;
+    }, { passive: true });
+  }
+</script>
+
+<style>
+  .sticky-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 90;
+    padding: 0.65rem 0;
+    background: rgba(15, 26, 46, 0.95);
+    backdrop-filter: blur(10px);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    animation: slideUp 0.35s var(--ease-out);
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(100%); }
+    to { transform: translateY(0); }
+  }
+
+  .sticky-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+  }
+
+  .sticky-info {
+    display: flex;
+    flex-direction: column;
+    color: var(--white);
+    font-size: 0.78rem;
+    min-width: 0;
+  }
+  .sticky-label {
+    font-size: 0.6rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .sticky-info strong { font-size: 0.92rem; }
+  .sticky-bonus { color: rgba(255,255,255,0.7); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+  .sticky-btn {
+    flex-shrink: 0;
+    padding: 0.65rem 1.1rem;
+    font-size: 0.82rem;
+  }
+
+  @media (min-width: 720px) {
+    .sticky-cta { display: none; }
+  }
+</style>

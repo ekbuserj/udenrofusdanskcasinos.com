@@ -1,0 +1,13 @@
+{
+  "name": "Uden ROFUS Dansk Casinos",
+  "short_name": "URDC",
+  "description": "Din guide til casino uden ROFUS og udenlandske casinoer for danskere",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f3ec",
+  "theme_color": "#c41230",
+  "lang": "da-DK",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}

@@ -1,0 +1,89 @@
+---
+import { SITE, INFO_PAGES } from '../config/site';
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <p class="footer-logo">{SITE.brand}</p>
+      <p class="footer-tag">{SITE.brandTagline}</p>
+      <p class="footer-meta">Opdateret {SITE.dateModifiedHuman} · 18+ · Spil ansvarligt</p>
+    </div>
+
+    <nav aria-label="Footer navigation">
+      <p class="footer-heading">Sider</p>
+      <ul>
+        {INFO_PAGES.map((p) => (
+          <li><a href={p.path}>{p.navLabel}</a></li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="footer-help">
+      <p class="footer-heading">Hjælp & ansvar</p>
+      <ul>
+        <li><a href="https://ludomani.dk" rel="noopener noreferrer" target="_blank">Ludomani.dk</a></li>
+        <li><a href="https://www.stopspillet.dk" rel="noopener noreferrer" target="_blank">StopSpillet</a></li>
+        <li><a href="https://www.rofus.nu" rel="noopener noreferrer" target="_blank">ROFUS</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="container footer-bottom">
+    <p>
+      <strong>Reklameoplysning:</strong> Nogle links er affiliatelinks. Vi kan modtage provision ved registrering, uden ekstra omkostning for dig. Dette påvirker ikke vores redaktionelle vurderinger.
+    </p>
+    <p>© {new Date().getFullYear()} {SITE.domain} · Alle rettigheder forbeholdes</p>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: 3rem;
+    padding: 2.5rem 0 1.5rem;
+    background: var(--navy);
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 0.88rem;
+  }
+
+  .footer-grid {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 640px) {
+    .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
+  }
+
+  .footer-logo {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    color: var(--white);
+    margin: 0 0 0.4rem;
+  }
+  .footer-tag { margin: 0 0 0.6rem; opacity: 0.85; }
+  .footer-meta { font-size: 0.78rem; opacity: 0.6; margin: 0; }
+
+  .footer-heading {
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 0.75rem;
+  }
+
+  ul { list-style: none; margin: 0; padding: 0; }
+  li { margin-bottom: 0.4rem; }
+  a { color: rgba(255,255,255,0.85); text-decoration: none; }
+  a:hover { color: var(--white); text-decoration: underline; }
+
+  .footer-bottom {
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.78rem;
+    opacity: 0.65;
+  }
+  .footer-bottom p { max-width: none; margin-bottom: 0.5rem; }
+</style>

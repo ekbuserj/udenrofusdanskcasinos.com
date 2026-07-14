@@ -1,0 +1,17 @@
+---
+import { CASINOS } from '../config/casinos';
+
+interface Props {
+  slug: string;
+  label?: string;
+}
+
+const { slug, label } = Astro.props;
+const casino = CASINOS.find((c) => c.slug === slug);
+if (!casino) throw new Error(`Casino not found: ${slug}`);
+---
+
+<a href={casino.url} target="_blank" rel="sponsored nofollow noopener" class="casino-mention">
+  <img src={casino.logo} alt="" width="22" height="22" loading="lazy" decoding="async" />
+  {label ?? casino.name}
+</a>

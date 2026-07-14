@@ -1,0 +1,37 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { INFO_PAGES, SITE } from '../config/site';
+import { buildGraph, organizationSchema, webPageSchema, breadcrumbSchema } from '../lib/schema';
+
+const page = INFO_PAGES[2];
+const schema = buildGraph([
+  organizationSchema(),
+  webPageSchema({ path: page.path, title: page.title, description: page.description }),
+  breadcrumbSchema([{ name: 'Forside', path: '/' }, { name: 'Privatlivspolitik', path: page.path }]),
+]);
+---
+
+<BaseLayout title={page.title} description={page.description} path={page.path} schema={schema}>
+  <div class="container page-layout">
+    <Breadcrumbs crumbs={[{ name: 'Forside', path: '/' }, { name: 'Privatlivspolitik', path: page.path }]} />
+    <h1>{page.h1}</h1>
+    <article class="prose">
+      <p>Sidst opdateret: {SITE.dateModifiedHuman}</p>
+      <h2>Data vi indsamler</h2>
+      <p>
+        Vi indsamler ikke personlige oplysninger via formularer. Serverlogs kan midlertidigt indeholde IP-adresser til sikkerhedsformål. Vi bruger ikke tracking-cookies til marknadsføring.
+      </p>
+      <h2>Affiliatelinks</h2>
+      <p>
+        Links til casinoer er affiliatelinks. Når du klikker og opretter konto, kan vi modtage provision. Det påvirker ikke din oplevelse eller pris. Affiliate-partnere kan sætte egne cookies, når du forlader vores side.
+      </p>
+      <h2>Kontakt</h2>
+      <p>Spørgsmål? Skriv til <a href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p>
+    </article>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-layout { padding: 1.5rem 0 3rem; }
+</style>

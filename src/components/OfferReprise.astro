@@ -1,0 +1,107 @@
+---
+import { CASINOS, TOP_CASINO } from '../config/casinos';
+---
+
+<div class="reprise reveal" id="bonus-igen">
+  <div class="reprise-head">
+    <p class="label">Klar til at spille?</p>
+    <h2>Hent din velkomstbonus nu</h2>
+    <p>Du har læst guiden — her er de bedste tilbud samlet ét sted.</p>
+  </div>
+
+  <div class="reprise-grid">
+    {CASINOS.map((c) => (
+      <a href={c.url} target="_blank" rel="sponsored nofollow noopener" class="reprise-item">
+        <span class="reprise-logo" style={`background:${c.logoBg}`}>
+          <img src={c.logo} alt="" width="32" height="32" loading="lazy" decoding="async" />
+        </span>
+        <span class="reprise-info">
+          <span class="reprise-name">{c.name}</span>
+          <span class="reprise-bonus">{c.bonus}</span>
+        </span>
+        <span class="reprise-arrow" aria-hidden="true">→</span>
+      </a>
+    ))}
+  </div>
+
+  <a href={TOP_CASINO.url} target="_blank" rel="sponsored nofollow noopener" class="btn btn-primary reprise-main-cta">
+    Prøv {TOP_CASINO.name} — {TOP_CASINO.bonus}
+  </a>
+</div>
+
+<style>
+  .reprise {
+    margin: 3rem 0 2rem;
+    padding: 1.75rem;
+    background: linear-gradient(160deg, var(--white) 0%, var(--cream-2) 100%);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+  }
+
+  .reprise-head { margin-bottom: 1.25rem; }
+  .reprise-head h2 { margin: 0.25rem 0 0.5rem; }
+  .reprise-head p { color: var(--ink-soft); margin: 0; font-size: 0.92rem; }
+
+  .reprise-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .reprise-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 0.85rem;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--ink);
+    transition: border-color 0.2s, transform 0.2s var(--ease-spring), box-shadow 0.2s;
+  }
+
+  @media (hover: hover) {
+    .reprise-item:hover {
+      border-color: var(--danish-red);
+      transform: translateX(4px);
+      box-shadow: var(--shadow-sm);
+    }
+  }
+
+  .reprise-logo {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 6px;
+    padding: 0.3rem;
+  }
+  .reprise-logo img { max-width: 100%; max-height: 1.6rem; object-fit: contain; }
+
+  .reprise-info { flex: 1; min-width: 0; display: flex; flex-direction: column; }
+  .reprise-name { font-weight: 700; font-size: 0.9rem; }
+  .reprise-bonus { font-size: 0.78rem; color: var(--danish-red); font-weight: 600; }
+
+  .reprise-arrow {
+    color: var(--danish-red);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+  }
+  .reprise-item:hover .reprise-arrow { transform: translateX(3px); }
+
+  .reprise-main-cta { width: 100%; }
+
+  @media (min-width: 640px) {
+    .reprise-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.5rem;
+    }
+  }
+</style>
