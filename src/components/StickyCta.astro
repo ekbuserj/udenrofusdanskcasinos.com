@@ -40,9 +40,10 @@ import { TOP_CASINO } from '../config/casinos';
     right: 0;
     z-index: 90;
     padding: 0.65rem 0;
-    background: rgba(15, 26, 46, 0.95);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid rgba(255,255,255,0.08);
+    background: rgba(7, 26, 21, 0.96);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--gold-line);
+    box-shadow: 0 -8px 32px rgba(0, 0, 0, 0.35);
     animation: slideUp 0.35s var(--ease-out);
   }
 
@@ -61,7 +62,7 @@ import { TOP_CASINO } from '../config/casinos';
   .sticky-info {
     display: flex;
     flex-direction: column;
-    color: var(--white);
+    color: var(--cream);
     font-size: 0.78rem;
     min-width: 0;
   }
@@ -73,7 +74,7 @@ import { TOP_CASINO } from '../config/casinos';
     color: var(--gold);
   }
   .sticky-info strong { font-size: 0.92rem; }
-  .sticky-bonus { color: rgba(255,255,255,0.7); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sticky-bonus { color: rgba(243, 236, 224, 0.65); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
   .sticky-btn {
     flex-shrink: 0;

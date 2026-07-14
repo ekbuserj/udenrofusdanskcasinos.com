@@ -33,15 +33,16 @@ import { CASINOS, TOP_CASINO } from '../config/casinos';
   .reprise {
     margin: 3rem 0 2rem;
     padding: 1.75rem;
-    background: linear-gradient(160deg, var(--white) 0%, var(--cream-2) 100%);
-    border: 1px solid var(--line);
+    background:
+      linear-gradient(160deg, rgba(26, 20, 14, 0.65) 0%, rgba(12, 46, 36, 0.85) 100%);
+    border: 1px solid var(--gold-line);
     border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-md);
+    box-shadow: var(--shadow-md), 0 0 40px rgba(201, 168, 76, 0.08);
   }
 
   .reprise-head { margin-bottom: 1.25rem; }
-  .reprise-head h2 { margin: 0.25rem 0 0.5rem; }
-  .reprise-head p { color: var(--ink-soft); margin: 0; font-size: 0.92rem; }
+  .reprise-head h2 { margin: 0.25rem 0 0.5rem; color: var(--cream); }
+  .reprise-head p { color: rgba(243, 236, 224, 0.75); margin: 0; font-size: 0.92rem; }
 
   .reprise-grid {
     display: flex;
@@ -55,8 +56,8 @@ import { CASINOS, TOP_CASINO } from '../config/casinos';
     align-items: center;
     gap: 0.75rem;
     padding: 0.65rem 0.85rem;
-    background: var(--white);
-    border: 1px solid var(--line);
+    background: linear-gradient(145deg, #faf6ef 0%, #f0e8d8 100%);
+    border: 1px solid var(--gold-line);
     border-radius: var(--radius-sm);
     text-decoration: none;
     color: var(--ink);
@@ -65,9 +66,9 @@ import { CASINOS, TOP_CASINO } from '../config/casinos';
 
   @media (hover: hover) {
     .reprise-item:hover {
-      border-color: var(--danish-red);
+      border-color: var(--gold);
       transform: translateX(4px);
-      box-shadow: var(--shadow-sm);
+      box-shadow: 0 0 20px rgba(201, 168, 76, 0.2);
     }
   }
 
@@ -84,7 +85,7 @@ import { CASINOS, TOP_CASINO } from '../config/casinos';
   .reprise-logo img { max-width: 100%; max-height: 1.6rem; object-fit: contain; }
 
   .reprise-info { flex: 1; min-width: 0; display: flex; flex-direction: column; }
-  .reprise-name { font-weight: 700; font-size: 0.9rem; }
+  .reprise-name { font-weight: 700; font-size: 0.9rem; color: var(--ink); }
   .reprise-bonus { font-size: 0.78rem; color: var(--danish-red); font-weight: 600; }
 
   .reprise-arrow {
